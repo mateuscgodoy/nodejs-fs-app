@@ -27,10 +27,12 @@ export default class DeleteCommand implements ICommand<DeleteParams> {
     const { path } = params;
     try {
       await fs.unlink(path);
-      console.log(`File from path ${path} deleted successfully`);
+      console.log(`✅ File from path ${path} deleted successfully`);
     } catch (error) {
       if (error instanceof StdError && error.code === 'ENOENT') return;
-      console.error(error);
+      if (error instanceof Error) {
+        console.error(`❌ Error: ${error.message}`);
+      }
     }
   }
 }

@@ -26,7 +26,13 @@ export default class UpdateCommand implements ICommand<UpdateParams> {
 
   async action(params: UpdateParams): Promise<void> {
     const { path, content } = params;
-    await fs.writeFile(path, content, { flag: 'a' });
-    console.log('Content successfully added to the file');
+    try {
+      await fs.writeFile(path, content, { flag: 'a' });
+      console.log('✅ Content successfully added to the file');
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(`❌ Error: ${error.message}`);
+      }
+    }
   }
 }

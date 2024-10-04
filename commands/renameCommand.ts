@@ -33,7 +33,9 @@ export default class RenameCommand implements ICommand<RenameParams> {
       this.logSuccessMessage(path, newPath);
     } catch (error) {
       if (error instanceof StdError && error.code === 'ENOENT') return;
-      console.error(error);
+      if (error instanceof Error) {
+        console.error(`❌ Error: ${error.message}`);
+      }
     }
   }
 
@@ -42,7 +44,7 @@ export default class RenameCommand implements ICommand<RenameParams> {
     const newPathParts = newPath.split(sep);
 
     console.log(
-      `File renamed from ${pathParts[pathParts.length - 1]} to ${
+      `✅ File renamed from ${pathParts[pathParts.length - 1]} to ${
         newPathParts[newPathParts.length - 1]
       } successfully`
     );
