@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 
 import StdError from '../error';
-import ICommand from '../ICommand';
+import ICommand from './ICommand';
 
 interface DeleteParams {
   path: string;

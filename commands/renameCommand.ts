@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { sep } from 'node:path';
 
 import StdError from '../error';
-import ICommand from '../ICommand';
+import ICommand from './ICommand';
 
 interface RenameParams {
   path: string;

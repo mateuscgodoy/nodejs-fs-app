@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 
-import ICommand from '../ICommand';
+import ICommand from './ICommand';
 
 interface UpdateParams {
   path: string;
