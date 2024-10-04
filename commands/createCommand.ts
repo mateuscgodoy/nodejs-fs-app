@@ -26,8 +26,11 @@ export default class CreateCommand implements ICommand<CreateParams> {
     const { path } = params;
     try {
       await fs.writeFile(path, '', { flag: 'wx' });
+      console.log('✅ File create with success');
     } catch (error) {
-      console.error(error);
+      if (error instanceof Error) {
+        console.error(`❌ Error: ${error.message}`);
+      }
     }
   }
 }
